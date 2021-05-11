@@ -15,37 +15,44 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 
 <style scoped>
 /* Breaking down the animations styling */
 .animated-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #222;
   font-family: Roboto, Arial, sans-serif;
-  height: 90vmin;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vmin;
+  height: 100vh;
+  /* left: 50%; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* width: 90vmin; */
 }
 
+/* Hides the text before revealing */
 .animated-title > div {
   height: 50%;
   overflow: hidden;
   position: absolute;
   width: 100%;
 }
+/* Text sizing */
 .animated-title > div div {
   font-size: 12vmin;
   padding: 2vmin 0;
   position: absolute;
 }
+/* Each line will be their own */
 .animated-title > div div span {
   display: block;
 }
+/* Animation bar */
 .animated-title > div.text-top {
   border-bottom: 1vmin solid rgb(51, 51, 51);
   top: 0;
