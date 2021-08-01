@@ -1,12 +1,16 @@
 <template>
   <div class="container">
-    <Landing />
-    <div class="test">hello</div>
+    <HomePanel />
   </div>
 </template>
 
 <script>
-export default {};
+import HomePanel from "~/components/UI/Landing-Page/HomePanel.vue";
+export default {
+  components: {
+    HomePanel,
+  },
+};
 </script>
 
 <style scoped>
