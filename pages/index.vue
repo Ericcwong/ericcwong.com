@@ -1,11 +1,12 @@
 <template>
-  <div class="container">
+  <section class="container">
     <HomePanel />
-  </div>
+  </section>
 </template>
 
 <script>
 import HomePanel from "~/components/UI/Landing-Page/HomePanel.vue";
+
 export default {
   components: {
     HomePanel,
@@ -14,8 +15,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  /* display: flex;
-  posi */
-}
 </style>
