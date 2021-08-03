@@ -1,6 +1,6 @@
 <template>
   <div class="skills">
-    <span>Skills</span>
+    <span class="skills-title">Skills</span>
     <div class="skill" v-for="skill in skills" :key="skill.name">
       <span>{{ skill.name }}</span>
       <img
@@ -44,8 +44,14 @@ export default {
 
 <style scoped>
 .skills {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  border-top: 1px solid lightslategrey;
+  border-bottom: 1px solid lightslategrey;
+}
+.skills-title {
+  font-size: 1.25rem;
 }
 .skill {
   display: flex;
