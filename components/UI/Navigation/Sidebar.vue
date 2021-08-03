@@ -48,6 +48,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: fixed;
 }
 .arrow-up {
   margin: auto;
