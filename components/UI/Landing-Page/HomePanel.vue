@@ -2,9 +2,8 @@
   <section class="container">
     <div class="introduction">
       <div class="introduction-text">
-        <span
-          >Hello, there! My name is Eric and I build websites while jumping from
-          hobby to hobby. Currently my hobby is to plant vegetables or fruits.
+        <span>
+          Hello, there! My name is Eric and I am a Fullstack developer.
         </span>
       </div>
       <img
@@ -39,7 +38,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .introduction-image {
