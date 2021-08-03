@@ -45,6 +45,7 @@ export default {
 <style scoped>
 .skills {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid lightslategrey;
