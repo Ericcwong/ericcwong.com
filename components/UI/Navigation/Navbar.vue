@@ -1,7 +1,7 @@
 <template>
   <nav>
     <v-app-bar dark>
-      <v-toolbar-title><nuxt-link to="/">My files</nuxt-link></v-toolbar-title>
+      <v-toolbar-title><nuxt-link to="/">Eric Wong</nuxt-link></v-toolbar-title>
 
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon class="nav-drawer" @click.stop="drawer = !drawer">

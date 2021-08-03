@@ -27,6 +27,7 @@ export default {
 <style scoped>
 .page-container {
   display: grid;
+  height: 100%;
   grid-template-columns: 10% 80% 10%;
   grid-template-areas: "sidebar body .";
 }
