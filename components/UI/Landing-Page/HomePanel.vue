@@ -2,8 +2,10 @@
   <section class="container">
     <div class="introduction">
       <div class="introduction-text">
-        <span> Hi, how's it going? My name is Eric</span>
-        <HomeSkills />
+        <span
+          >Hello, there! My name is Eric and I build websites while jumping from
+          hobby to hobby. Currently my hobby is to plant vegetables or fruits.
+        </span>
       </div>
       <img
         class="introduction-image"
@@ -11,7 +13,7 @@
         alt="Guy coding drawing"
       />
     </div>
-
+    <HomeSkills />
     <HomeContent />
   </section>
 </template>
@@ -31,6 +33,7 @@ export default {
 .introduction {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* margin: 10% 0 10% 0; */
 }
 .introduction-text {
   display: flex;
