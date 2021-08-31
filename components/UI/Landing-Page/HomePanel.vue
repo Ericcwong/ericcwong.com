@@ -1,19 +1,19 @@
 <template>
   <section class="container">
     <div class="introduction">
-      <div class="introduction-text">
-        <span>
-          Hello, there! My name is Eric and I am a Fullstack developer.
-        </span>
+      <div class="introduction-title">
+        <span> Hello, there! </span>
+        <span> My name is Eric</span>
+        <span>A Fullstack developer</span>
       </div>
-      <img
-        class="introduction-image"
-        src="../SVG/guy-coding.svg"
-        alt="Guy coding drawing"
-      />
+      <ul class="introduction-links">
+        <li v-for="link in links" :key="link.name">
+          <nuxt-link :to="link.to">{{ link.name }}</nuxt-link>
+        </li>
+      </ul>
     </div>
-    <HomeSkills />
-    <HomeContent />
+    <!-- <HomeSkills /> -->
+    <!-- <HomeContent /> -->
   </section>
 </template>
 
@@ -25,23 +25,48 @@ export default {
     HomeContent,
     HomeSkills,
   },
+  data() {
+    return {
+      links: [
+        { name: "Projects", to: "/projects" },
+        {
+          name: "About",
+          to: "/about",
+        },
+        {
+          name: "Contact",
+          to: "mailto:ericcwong12@gmail.com",
+        },
+      ],
+    };
+  },
 };
 </script>
 
 <style scoped>
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
 .introduction {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* margin: 10% 0 10% 0; */
+  grid-template-columns: 70% 30%;
+  color: white;
 }
-.introduction-text {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: 1.5rem;
+.introduction-title {
+  display: inline;
+  font-size: 4em;
 }
-
-.introduction-image {
-  width: 100%;
+.introduction-links > li {
+  list-style: none;
+  text-align: center;
+  margin: 1em 0 1em 0;
+  border: 1px solid whitesmoke;
+}
+.introduction-links > li > a {
+  color: lightgray;
+  font-size: 3em;
+  text-decoration: none;
 }
 </style>

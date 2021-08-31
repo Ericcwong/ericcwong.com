@@ -54,8 +54,8 @@ export default {
   margin: auto;
   width: 1.5em;
   height: 1.5em;
-  border-top: 0.25em solid #333;
-  border-right: 0.25em solid #333;
+  border-top: 0.25em solid #fff;
+  border-right: 0.25em solid #fff;
   -moz-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
@@ -64,15 +64,15 @@ export default {
   margin: auto;
   width: 1.5em;
   height: 1.5em;
-  border-top: 0.25em solid #333;
-  border-right: 0.25em solid #333;
+  border-top: 0.25em solid #fff;
+  border-right: 0.25em solid #fff;
   -moz-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   transform: rotate(135deg);
 }
 .vertical-line {
   display: inline-block;
-  border-left: 0.1em solid #333;
+  border-left: 0.1em solid #fff;
   margin: 0 10px;
   height: 50px;
 }

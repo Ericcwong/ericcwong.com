@@ -59,7 +59,7 @@ export default {
   border-bottom: 1px solid lightslategrey;
 }
 .skills-title {
-  font-size: 1.25rem;
+  font-size: 2em;
 }
 .skill {
   display: flex;

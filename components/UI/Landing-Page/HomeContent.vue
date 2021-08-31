@@ -1,32 +1,33 @@
 <template>
   <section class="projects">
     <span class="title">Projects I developed</span>
-    <v-card
-      class="mx-auto"
-      :id="project.name"
-      max-width="344"
-      v-for="project in projects"
-      :key="project.name"
-    >
-      <v-img :src="project.image" height="200px"></v-img>
-      <v-card-title> {{ project.name }} </v-card-title>
-      <v-card-subtitle> {{ project.shortDescription }} </v-card-subtitle>
-      <v-card-actions>
-        <v-btn color="orange lighten-2" text> More Information </v-btn>
-        <v-spacer></v-spacer>
-        <v-btn icon @click="show = !show">
-          <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
-        </v-btn>
-      </v-card-actions>
-      <v-expand-transition>
-        <div v-show="show">
-          <v-divider></v-divider>
-          <v-card-text>
-            {{ project.description }}
-          </v-card-text>
-        </div>
-      </v-expand-transition>
-    </v-card>
+    <div class="project-cards">
+      <div
+        class="project-card mx-auto"
+        :id="project.name"
+        v-for="project in projects"
+        :key="project.name"
+      >
+        <img :src="project.image" />
+        <span> {{ project.name }} </span>
+        <span> {{ project.shortDescription }} </span>
+        <!-- <v-card-actions>
+          <v-btn color="orange lighten-2" text> More Information </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="show = !show">
+            <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+        <v-expand-transition>
+          <div v-show="show">
+            <v-divider></v-divider>
+            <v-card-text>
+              {{ project.description }}
+            </v-card-text>
+          </div>
+        </v-expand-transition> -->
+      </div>
+    </div>
   </section>
 </template>
 
@@ -46,17 +47,22 @@ export default {
 </script>
 
 <style scoped>
-.projects {
+/* .projects {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
+} */
 .title {
-  flex: 0 0 100%;
-  margin-bottom: 2rem;
-  font-size: 1.25rem;
+  font-size: 2em;
 }
-.project-image {
-  width: 40%;
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+.project-card {
+  display: grid;
+}
+img {
+  max-width: 100%;
 }
 </style>

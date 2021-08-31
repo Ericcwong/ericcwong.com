@@ -1,12 +1,8 @@
 <template>
   <div class="page-container">
-    <div class="page-side-bar">
-      <Sidebar />
-    </div>
     <div class="page-body">
       <Navbar />
       <Nuxt />
-      <Footer />
     </div>
   </div>
 </template>
@@ -26,10 +22,12 @@ export default {
 
 <style scoped>
 .page-container {
-  display: grid;
-  height: 100%;
-  grid-template-columns: 10% 80% 10%;
-  grid-template-areas: "sidebar body .";
+  /* display: grid;
+  height: 100%; */
+  width: 100%;
+  /* grid-template-columns: 10% 80% 10%; */
+  /* grid-template-areas: "sidebar body ."; */
+  background: #2f2d2d;
 }
 .page-body {
   grid-area: body;
