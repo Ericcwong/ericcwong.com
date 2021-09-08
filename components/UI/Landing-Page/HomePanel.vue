@@ -1,28 +1,25 @@
 <template>
   <section class="intro">
-    <div class="content">
-      <div>
-        <div class="sub-title">I am</div>
-        <div class="title">Eric</div>
-        <div class="sub-title">an Fullstack developer</div>
-      </div>
-      <GuySVG class="SVG" />
-      <p class="sub-title">
-        Building steps towards the future one step at a time
-      </p>
-      <div class="links">
-        <nuxt-link
-          v-for="link in links"
-          :key="link.name"
-          :class="link.class"
-          :to="link.to"
-          >{{ link.name }}
-        </nuxt-link>
-      </div>
+    <div class="header">
+      <div class="header-top"></div>
+      <div class="header-left"></div>
+      <div class="sub-title-one">I am</div>
+      <div class="title">Eric</div>
+      <div class="sub-title-two">a Fullstack developer</div>
+      <div class="header-bottom"></div>
+    </div>
+    <div class="links">
+      <nuxt-link
+        v-for="link in links"
+        :key="link.name"
+        :class="link.class"
+        :to="link.to"
+        >{{ link.name }}
+      </nuxt-link>
     </div>
 
     <div class="see-more">
-      <p>See More</p>
+      <p>Lets dive deeper</p>
       <div class="arrow-indicator">
         <span class="arrow"></span>
         <span class="arrow"></span>
@@ -58,16 +55,61 @@ export default {
     };
   },
   methods: {
+    lineAnimation() {
+      const gsap = this.$gsap;
+      gsap.from(".header-top", 1, {
+        // xPercent: 100,
+        scaleX: 0,
+        transformOrigin: "right",
+
+        // width: 0,
+        opacity: 0,
+        duration: 2,
+        ease: "power4.out",
+      });
+      gsap.from(".header-left", 1, {
+        height: 0,
+        opacity: 0,
+        delay: 1,
+        duration: 2,
+        ease: "power4.out",
+      });
+      gsap.from(".header-bottom", 1, {
+        width: 0,
+        opacity: 0,
+        duration: 2,
+        delay: 1.5,
+        ease: "power4.out",
+      });
+    },
+    titleAnimation() {
+      const gsap = this.$gsap;
+      gsap.from(".title", {
+        x: -100,
+        opacity: 0,
+        duration: 2,
+        delay: 1.4,
+        ease: "power4.out",
+      });
+    },
+
     // Sub title animation
     subTitleAnimation() {
       const gsap = this.$gsap;
-      gsap.from(".sub-title", {
-        y: -100,
+      gsap.from(".sub-title-one", {
+        x: -100,
         opacity: 0,
         duration: 1.5,
-        ease: "Power2.easeInOut",
+        delay: 1,
+        ease: "power4.out",
       });
-      gsap.to(".sub-title", { duration: 1, delay: 1 });
+      gsap.from(".sub-title-two", {
+        x: -100,
+        opacity: 0,
+        duration: 1.5,
+        delay: 2,
+        ease: "power4.out",
+      });
     },
     //Link animations
     linkAnimation() {
@@ -97,19 +139,13 @@ export default {
       });
       gsap.to(".contact", { x: 0, duration: 1, delay: 1.5 });
     },
-    titleAnimation() {
-      const gsap = this.$gsap;
-      gsap.from(".title", {
-        duration: 2,
-        ease: "SteppedEase.config(20)",
-      });
-    },
   },
 
   mounted() {
     this.subTitleAnimation();
     this.linkAnimation();
     this.titleAnimation();
+    this.lineAnimation();
   },
 };
 </script>
@@ -124,41 +160,44 @@ export default {
   background-color: #000000;
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
   z-index: 1;
-}
-/* Background image with blur effect */
-.intro:before {
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.12;
-
-  z-index: -1;
-}
-
-.content {
-  display: grid;
-  height: 50vh;
-  margin: 10rem;
-  padding: 4rem;
-  grid-template-columns: 1fr 1fr 1.5fr;
-  grid-template-rows: 70% 30%;
-  column-gap: 5rem;
-  row-gap: 2.5rem;
-  grid-template-areas:
-    "title title SVG"
-    "subTitle subTitle links";
   color: white;
 }
+.header {
+  display: grid;
+  grid-template-areas:
+    "header-left header-top"
+    "header-left subTitleOne"
+    "header-left title"
+    "header-left subTitleTwo"
+    "header-left header-bottom";
+}
+.header-left {
+  border-left: 2px solid white;
+  grid-area: header-left;
+}
+.header-top {
+  border-top: 2px solid white;
+  grid-area: header-top;
+}
+.header-bottom {
+  border-bottom: 2px solid white;
+  grid-area: header-bottom;
+}
 .title {
-  font-size: 3em;
+  font-size: 6em;
   grid-area: title;
 }
-.sub-title {
-  font-size: 1.75rem;
-  grid-area: subTitle;
+.sub-title-one,
+.sub-title-two {
+  font-size: 4rem;
 }
-.links {
+.sub-title-one {
+  grid-area: subTitleOne;
+}
+.sub-title-two {
+  grid-area: subTitleTwo;
+}
+/* .links {
   display: grid;
   column-gap: 5rem;
   grid-template-columns: fit-content(100%) fit-content(100%) fit-content(100%);
@@ -167,8 +206,8 @@ export default {
     ". about. "
     ". . contact";
   grid-area: links;
-}
-a:nth-child(1) {
+} */
+a::nth-child(1) {
   text-align: left;
 }
 .links > a {
@@ -260,38 +299,9 @@ span {
   }
 }
 
+@keyframes border-left-animation {
+}
+
 @media only screen and (max-width: 1050px) {
-  .intro:before {
-    content: " ";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.12;
-    background-image: url("/images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-  }
-  .content {
-    display: grid;
-    grid-template-areas:
-      "title title"
-      "subTitle subTitle"
-      "links links";
-    grid-template-rows: auto;
-    margin: 2rem;
-    font-size: 12px;
-    height: 70vh;
-  }
-  .sub-title {
-    margin: 2rem 0 2rem 0;
-  }
-  .links {
-    margin: 2rem 0 2rem 0;
-  }
-  .see-more {
-    align-self: flex-end;
-  }
 }
 </style>
