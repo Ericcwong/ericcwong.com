@@ -48,7 +48,7 @@ export default {
         },
         {
           name: "Contact",
-          to: "mailto:ericcwong12@gmail.com",
+          to: "/contact",
           class: "contact",
         },
       ],
@@ -58,11 +58,8 @@ export default {
     lineAnimation() {
       const gsap = this.$gsap;
       gsap.from(".header-top", 1, {
-        // xPercent: 100,
         scaleX: 0,
         transformOrigin: "right",
-
-        // width: 0,
         opacity: 0,
         duration: 2,
         ease: "power4.out",
@@ -121,7 +118,6 @@ export default {
         delay: 1,
         ease: "Power2.easeInOut",
       });
-      gsap.to(".projects", { x: 0, duration: 1, delay: 1 });
       // About Link
       gsap.from(".about", {
         opacity: 0,
@@ -129,7 +125,6 @@ export default {
         delay: 1.25,
         ease: "Power2.easeInOut",
       });
-      gsap.to(".about", { x: 0, duration: 1, delay: 1.25 });
       // Contact Link
       gsap.from(".contact", {
         opacity: 0,
@@ -137,7 +132,6 @@ export default {
         delay: 1.5,
         ease: "Power2.easeInOut",
       });
-      gsap.to(".contact", { x: 0, duration: 1, delay: 1.5 });
     },
   },
 
@@ -197,27 +191,17 @@ export default {
 .sub-title-two {
   grid-area: subTitleTwo;
 }
-/* .links {
-  display: grid;
-  column-gap: 5rem;
-  grid-template-columns: fit-content(100%) fit-content(100%) fit-content(100%);
-  grid-template-areas:
-    "project . ."
-    ". about. "
-    ". . contact";
-  grid-area: links;
-} */
 a::nth-child(1) {
   text-align: left;
+}
+.links {
+  display: flex;
+  justify-content: space-between;
 }
 .links > a {
   color: lightgray;
   font-size: 1.5rem;
   text-decoration: none;
-  position: relative;
-  /* width: 100%; */
-  overflow: hidden; /* NEW */
-  min-width: 0; /* NEW; needed for Firefox */
 }
 a:hover {
   color: #fff;
@@ -279,14 +263,14 @@ span {
   border: none;
   border-bottom: 3px solid #fff;
   border-right: 3px solid #fff;
-  animation: animate 1s linear infinite;
+  animation: arrowAnimation 1s linear infinite;
 }
 .arrow-indicator .arrow:nth-child(1) {
   top: 7.5px;
   left: 7.5px;
   animation-delay: 0.2s;
 }
-@keyframes animate {
+@keyframes arrowAnimation {
   0% {
     border-color: #fff;
   }
@@ -297,9 +281,6 @@ span {
   100% {
     border-color: #222;
   }
-}
-
-@keyframes border-left-animation {
 }
 
 @media only screen and (max-width: 1050px) {

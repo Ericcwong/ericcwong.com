@@ -57,7 +57,6 @@ export default {
   align-items: center;
   border-top: 1px solid lightslategrey;
   border-bottom: 1px solid lightslategrey;
-  background: white;
   height: 100vh;
 }
 .skills-title {
