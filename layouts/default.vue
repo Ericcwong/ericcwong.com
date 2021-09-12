@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <div class="page-body">
-      <Navbar />
+      <Navbar class="nav" />
       <Nuxt />
     </div>
   </div>
@@ -22,15 +22,16 @@ export default {
 
 <style scoped>
 .page-container {
-  /* display: grid;
-  height: 100%; */
   width: 100%;
-  /* grid-template-columns: 10% 80% 10%; */
-  /* grid-template-areas: "sidebar body ."; */
-  background: #2f2d2d;
+  background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
 }
 .page-body {
   grid-area: body;
+}
+.nav {
+  width: 100%;
+  position: absolute;
+  z-index: 100;
 }
 .page-side-bar {
   display: flex;
