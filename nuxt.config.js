@@ -12,17 +12,27 @@ export default {
       { hid: "description", name: "description", content: "" },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "stylesheet", href:'https://fonts.googleapis.com/css?family=Roboto:700'},
-      { rel:"stylesheet", href:"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"},
-      {rel:"preconnect", href:"https://fonts.googleapis.com"},
-      {rel:"preconnect", href:"https://fonts.gstatic.com"},
-      {href:"https://fonts.googleapis.com/css2?family=Spartan&display=swap", rel:"stylesheet"}
-    ]
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Roboto:700",
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
+      {
+        href: "https://fonts.googleapis.com/css2?family=Spartan&display=swap",
+        rel: "stylesheet",
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [`~/assets/style.css`],
+  css: [`@/assets/style.css`, "@/assets/variables.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -31,11 +41,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/composition-api/module',
-    '@nuxtjs/vuetify',
-    'nuxt-gsap-module'
-  ],
+  buildModules: ["@nuxtjs/composition-api/module", "nuxt-gsap-module"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
