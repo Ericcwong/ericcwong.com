@@ -1,12 +1,17 @@
 <template>
   <nav>
-    <ul class="nav-left">
-      <li><nuxt-link to="/" class="nav-title">Eric Wong</nuxt-link></li>
-    </ul>
-    <ul class="nav-center"></ul>
-    <ul class="nav-right">
-      <li v-for="navLink in navLinks" :key="navLink.name">
-        <nuxt-link :to="navLink.to">{{ navLink.name }}</nuxt-link>
+    <div class="nav-left">
+      <img src="@/components/UI/SVG/logo.png" alt="" />
+      <ul class="nav-links">
+        <li class="link" v-for="navLink in navLinks" :key="navLink.name">
+          <nuxt-link :to="navLink.to">{{ navLink.name }}</nuxt-link>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="nav-links">
+      <li class="link" v-for="contact in contacts" :key="contact.name">
+        <a :href="contact.to">{{ contact.name }}</a>
       </li>
     </ul>
   </nav>
@@ -19,7 +24,15 @@ export default {
       navLinks: [
         { name: "Home", to: "/" },
         { name: "Project", to: "/project" },
+        { name: "About", to: "/about" },
+      ],
+      contacts: [
         { name: "Contact", to: "/contact" },
+        { name: "Github", to: "https://www.github.com/ericcwong" },
+        {
+          name: "LinkedIn",
+          to: "https://www.linkedin.com/in/eric-wong-b721bbb2/",
+        },
       ],
     };
   },
@@ -27,34 +40,28 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  margin-top: 1.25rem;
+nav,
+.nav-left,
+.nav-right,
+.nav-links {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+img {
+  width: 175px;
+}
+.nav-links {
+  margin: 0 1.5rem 0 1.5rem;
   justify-content: space-between;
 }
-.nav-left {
-  flex: 1;
 
-  text-align: center;
-}
-.nav-center {
-  flex: 4 1 0;
-}
-.nav-right {
-  display: flex;
-  flex: 2;
-  justify-content: space-evenly;
-}
-.nav-title {
-  font-size: 2rem;
-}
-li {
-  color: white;
+.link {
   list-style: none;
+  margin: 0 1.5rem 0 1.5rem;
 }
-a {
-  text-decoration: none;
+.link a {
   color: white;
+  text-decoration: none;
 }
 </style>
