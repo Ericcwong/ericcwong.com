@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div>
       <HomePanel />
     </div>
@@ -20,5 +20,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style scoped></style>
