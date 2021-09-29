@@ -1,9 +1,7 @@
 <template>
-  <div class="page-container">
-    <div class="page-body">
-      <Navbar class="nav" />
-      <Nuxt />
-    </div>
+  <div class="container">
+    <Navbar class="nav-bar" />
+    <Nuxt />
   </div>
 </template>
 
@@ -21,26 +19,15 @@ export default {
 </script>
 
 <style scoped>
-.page-container {
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
   width: 100%;
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
 }
-.page-body {
-  grid-area: body;
-}
-.nav {
-  width: 100%;
-  position: absolute;
-  z-index: 100;
-}
-.page-side-bar {
-  display: flex;
-  align-items: center;
-  grid-area: sidebar;
-}
-@media only screen and (max-width: 880px) {
-  .page-side-bar {
-    display: none;
-  }
+.nav-bar {
+  /* position: absolute;
+  z-index: -10; */
 }
 </style>
