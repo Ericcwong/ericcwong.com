@@ -4,27 +4,18 @@
       <div class="header-top"></div>
       <div class="header-left"></div>
       <div class="sub-title-one">I am</div>
-      <div class="title">Eric</div>
-      <div class="sub-title-two">a Fullstack developer</div>
+      <div class="header-title">Eric</div>
+      <div class="sub-title-two">a Web Developer</div>
       <div class="header-bottom"></div>
     </div>
     <div class="links">
-      <nuxt-link
+      <a
         v-for="link in links"
         :key="link.name"
         :class="link.class"
-        :to="link.to"
+        :href="link.to"
         >{{ link.name }}
-      </nuxt-link>
-    </div>
-
-    <div class="see-more">
-      <p>Lets dive deeper</p>
-      <div class="arrow-indicator">
-        <span class="arrow"></span>
-        <span class="arrow"></span>
-        <span class="arrow"></span>
-      </div>
+      </a>
     </div>
   </section>
 </template>
@@ -42,14 +33,14 @@ export default {
       links: [
         { name: "Projects", to: "/projects", class: "projects" },
         {
-          name: "About",
-          to: "/about",
-          class: "about",
+          name: "Github",
+          to: "https://github.com/Ericcwong",
+          class: "github",
         },
         {
-          name: "Contact",
-          to: "/contact",
-          class: "contact",
+          name: "LinkedIn",
+          to: "/https://www.linkedin.com/in/eric-wong-b721bbb2/",
+          class: "linkedin",
         },
       ],
     };
@@ -74,25 +65,21 @@ export default {
       gsap.from(".header-bottom", 1, {
         width: 0,
         opacity: 0,
-        duration: 2,
         delay: 1.5,
+        duration: 2,
         ease: "power4.out",
       });
     },
     titleAnimation() {
       const gsap = this.$gsap;
-      gsap.from(".title", {
+      gsap.from(".header-title", {
         x: -100,
         opacity: 0,
         duration: 2,
         delay: 1.4,
         ease: "power4.out",
       });
-    },
-
-    // Sub title animation
-    subTitleAnimation() {
-      const gsap = this.$gsap;
+      // Sub title animation. (The "I am" ... "a Fullstack developer")
       gsap.from(".sub-title-one", {
         x: -100,
         opacity: 0,
@@ -108,6 +95,7 @@ export default {
         ease: "power4.out",
       });
     },
+
     //Link animations
     linkAnimation() {
       const gsap = this.$gsap;
@@ -118,15 +106,15 @@ export default {
         delay: 1,
         ease: "Power2.easeInOut",
       });
-      // About Link
-      gsap.from(".about", {
+      // Github Link
+      gsap.from(".github", {
         opacity: 0,
         duration: 2,
         delay: 1.25,
         ease: "Power2.easeInOut",
       });
-      // Contact Link
-      gsap.from(".contact", {
+      // LinkedIn Link
+      gsap.from(".linkedin", {
         opacity: 0,
         duration: 2,
         delay: 1.5,
@@ -136,7 +124,6 @@ export default {
   },
 
   mounted() {
-    this.subTitleAnimation();
     this.linkAnimation();
     this.titleAnimation();
     this.lineAnimation();
@@ -147,12 +134,10 @@ export default {
 <style scoped>
 .intro {
   display: grid;
+  height: 100vh;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   position: relative;
-  background-color: #000000;
-  background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
   z-index: 1;
   color: white;
 }
@@ -164,6 +149,7 @@ export default {
     "header-left title"
     "header-left subTitleTwo"
     "header-left header-bottom";
+  margin-top: 4rem;
 }
 .header-left {
   border-left: 2px solid white;
@@ -172,18 +158,20 @@ export default {
 .header-top {
   border-top: 2px solid white;
   grid-area: header-top;
+  width: 100%;
 }
 .header-bottom {
   border-bottom: 2px solid white;
   grid-area: header-bottom;
+  width: 100%;
 }
-.title {
-  font-size: 6em;
+.header-title {
+  font-size: 6vw;
   grid-area: title;
 }
 .sub-title-one,
 .sub-title-two {
-  font-size: 4rem;
+  font-size: 4vw;
 }
 .sub-title-one {
   grid-area: subTitleOne;
@@ -191,46 +179,37 @@ export default {
 .sub-title-two {
   grid-area: subTitleTwo;
 }
-a::nth-child(1) {
-  text-align: left;
-}
 .links {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .links > a {
   color: lightgray;
   font-size: 1.5rem;
   text-decoration: none;
+  position: relative;
 }
 a:hover {
   color: #fff;
 }
-a::before {
+a:after {
   content: "";
   position: absolute;
-  display: block;
   width: 100%;
+  transform: scaleX(0);
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #000;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  background-color: #fff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
-a:hover::before {
+a:hover:after {
   transform: scaleX(1);
+  transform-origin: bottom left;
 }
-.projects {
-  grid-area: project;
-}
-.about {
-  grid-area: about;
-}
-.contact {
-  grid-area: contact;
-}
-.see-more {
+/* .see-more {
   display: flex;
   font-size: 1.5rem;
   color: white;
@@ -281,8 +260,16 @@ span {
   100% {
     border-color: #222;
   }
-}
+} */
 
 @media only screen and (max-width: 1050px) {
+  .header-title {
+    font-size: 10vw;
+    grid-area: title;
+  }
+  .sub-title-one,
+  .sub-title-two {
+    font-size: 10vw;
+  }
 }
 </style>
