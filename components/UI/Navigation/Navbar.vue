@@ -53,8 +53,6 @@ export default {
   },
   methods: {
     hamburger() {
-      console.log(this);
-      console.log("clicked");
       this.isActive = !this.isActive;
     },
   },
@@ -62,6 +60,12 @@ export default {
 </script>
 
 <style scoped>
+.nav-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
 nav,
 .nav-left,
 .nav-right,
@@ -117,6 +121,7 @@ a:hover::before {
   outline: none;
   background: none;
 }
+/* Hamburger for mobile view */
 .hamburger {
   display: none;
   position: absolute;
@@ -160,10 +165,10 @@ a:hover::before {
 .hamburger.active:hover span {
   background: rgb(163, 53, 53);
 }
+/* End of hamburger */
 @media (max-width: 1050px) {
   nav {
     flex-direction: column;
-    /* align-items: flex-start; */
   }
 
   .nav-links {

@@ -26,8 +26,4 @@ export default {
   width: 100%;
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
 }
-.nav-bar {
-  /* position: absolute;
-  z-index: -10; */
-}
 </style>

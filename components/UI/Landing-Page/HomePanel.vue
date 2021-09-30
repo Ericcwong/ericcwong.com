@@ -8,7 +8,7 @@
       <div class="sub-title-two">a Web Developer</div>
       <div class="header-bottom"></div>
     </div>
-    <div class="links">
+    <!-- <div class="links">
       <a
         v-for="link in links"
         :key="link.name"
@@ -16,7 +16,7 @@
         :href="link.to"
         >{{ link.name }}
       </a>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -79,7 +79,7 @@ export default {
         delay: 1.4,
         ease: "power4.out",
       });
-      // Sub title animation. (The "I am" ... "a Fullstack developer")
+      // Sub title animation. (The "I am" ... "a Web developer")
       gsap.from(".sub-title-one", {
         x: -100,
         opacity: 0,
