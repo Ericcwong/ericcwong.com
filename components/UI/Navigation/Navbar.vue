@@ -1,19 +1,33 @@
 <template>
   <nav>
+    <img src="@/components/UI/SVG/logo.png" alt="" />
     <div class="nav-left">
-      <img src="@/components/UI/SVG/logo.png" alt="" />
-      <ul class="nav-links">
+      <ul class="nav-links" :class="{ active: isActive }">
         <li class="link" v-for="navLink in navLinks" :key="navLink.name">
-          <nuxt-link :to="navLink.to">{{ navLink.name }}</nuxt-link>
+          <button @click="hamburger()" class="nav-button">
+            <nuxt-link :to="navLink.to">{{ navLink.name }}</nuxt-link>
+          </button>
         </li>
       </ul>
     </div>
-
-    <ul class="nav-links">
-      <li class="link" v-for="contact in contacts" :key="contact.name">
-        <a :href="contact.to">{{ contact.name }}</a>
-      </li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links" :class="{ active: isActive }">
+        <li class="link" v-for="contact in contacts" :key="contact.name">
+          <button @click="hamburger()" class="nav-button">
+            <nuxt-link :to="contact.to">{{ contact.name }}</nuxt-link>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <button
+      class="hamburger"
+      :class="{ active: isActive }"
+      @click="hamburger()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 </template>
 
@@ -21,6 +35,7 @@
 export default {
   data() {
     return {
+      isActive: false,
       navLinks: [
         { name: "Home", to: "/" },
         { name: "Project", to: "/project" },
@@ -36,6 +51,13 @@ export default {
       ],
     };
   },
+  methods: {
+    hamburger() {
+      console.log(this);
+      console.log("clicked");
+      this.isActive = !this.isActive;
+    },
+  },
 };
 </script>
 
@@ -49,7 +71,7 @@ nav,
   align-items: center;
 }
 img {
-  width: 175px;
+  width: 100px;
 }
 .nav-links {
   margin: 0 1.5rem 0 1.5rem;
@@ -60,8 +82,121 @@ img {
   list-style: none;
   margin: 0 1.5rem 0 1.5rem;
 }
-.link a {
+
+a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
   color: white;
   text-decoration: none;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease;
+}
+
+a:hover::before {
+  transform: scaleX(1);
+}
+.nav-button {
+  font-size: 1rem;
+  font-family: "Spartan", sans-serif;
+  user-select: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+.hamburger {
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  z-index: 1;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+.hamburger span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  margin-right: 1.5rem;
+  position: relative;
+  border-radius: 6px;
+  z-index: 1;
+  transform-origin: 0 0;
+  transition: 0.4s;
+  background: white;
+}
+.hamburger.active span:nth-child(1) {
+  transform: translate(0px, -2px) rotate(45deg);
+}
+.hamburger:hover span:nth-child(2) {
+  transform: translateX(10px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(15px);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translate(-3px, 3px) rotate(-45deg);
+}
+.hamburger.active:hover span {
+  background: rgb(163, 53, 53);
+}
+@media (max-width: 1050px) {
+  nav {
+    flex-direction: column;
+    /* align-items: flex-start; */
+  }
+
+  .nav-links {
+    display: none;
+  }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    animation: growDown 700ms ease-in-out forwards;
+    transform-origin: top center;
+  }
+  .nav-links.active li {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+@keyframes growDown {
+  0% {
+    /* transform: translateY(-100%); */
+    opacity: 0;
+  }
+  /* 80% {
+    transform: scaleY(1.1);
+  } */
+  100% {
+    /* transform: translateY(0); */
+    opacity: 1;
+  }
 }
 </style>
