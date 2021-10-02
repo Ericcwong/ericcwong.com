@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Navbar class="nav-bar" />
-    <Nuxt />
+    <Nuxt class="content-body" />
   </div>
 </template>
 
@@ -20,10 +20,14 @@ export default {
 
 <style scoped>
 .container {
-  min-height: 100vh;
-  min-width: 100vw;
+  /* min-height: 100vh; */
+  /* min-width: 100vw; */
   position: relative;
-  width: 100%;
+  min-width: 100%;
+
   background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+}
+.content-body {
+  width: 75vw;
 }
 </style>

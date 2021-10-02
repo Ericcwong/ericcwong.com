@@ -1,11 +1,7 @@
 <template>
-  <div class="container">
-    <div>
-      <HomePanel />
-    </div>
-    <div>
-      <HomeSkills />
-    </div>
+  <div class="content">
+    <HomePanel />
+    <HomeSkills />
   </div>
 </template>
 
